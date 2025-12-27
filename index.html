@@ -2,615 +2,698 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>David Milán Servicios | Psicología y Formación</title>
-  <meta name="description" content="Terapia psicológica (ansiedad, pánico, estrés) y clases particulares (ESO, Bachillerato, Ingeniería). Online y presencial." />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clases Particulares & Psicología — David Milán</title>
+  <meta name="description" content="Clases particulares y apoyo psicológico: ansiedad, ataques de pánico, estrés, motivación y refuerzo académico ESO/Bachillerato e Ingeniería." />
+
   <style>
     :root{
-      --bg:#070A0F;
-      --card:#0C1220;
-      --card2:#0A1020;
-      --text:#EAF0FF;
-      --muted:#B6C3E6;
+      --bg:#0b1220;
+      --panel:rgba(255,255,255,.06);
+      --panel2:rgba(255,255,255,.08);
+      --text:#eaf0ff;
+      --muted:rgba(234,240,255,.72);
       --line:rgba(255,255,255,.10);
-      --neon:#57D7FF;
-      --neon2:#A96BFF;
-      --ok:#58F2A5;
-      --warn:#FFD36A;
+      --glow: 0 0 24px rgba(120,180,255,.35);
       --radius:18px;
-      --shadow: 0 18px 55px rgba(0,0,0,.55);
+      --max:1140px;
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background: radial-gradient(1200px 500px at 20% 0%, rgba(87,215,255,.14), transparent 55%),
-                  radial-gradient(900px 500px at 75% 10%, rgba(169,107,255,.12), transparent 55%),
-                  linear-gradient(180deg, #05070C, #070A0F 35%, #05070C);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", Helvetica;
+      background:
+        radial-gradient(900px 500px at 20% 0%, rgba(60,120,255,.25), transparent 60%),
+        radial-gradient(800px 500px at 85% 10%, rgba(190,80,255,.18), transparent 55%),
+        radial-gradient(700px 400px at 50% 100%, rgba(0,230,255,.10), transparent 60%),
+        var(--bg);
       color:var(--text);
+      overflow-x:hidden;
     }
-    a{color:inherit; text-decoration:none}
-    .container{width:min(1120px, calc(100% - 40px)); margin:0 auto}
-    .topbar{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(180%) blur(14px);
-      background: rgba(5,7,12,.55);
-      border-bottom:1px solid var(--line);
+
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px}
+    .nav{
+      position:sticky; top:0; z-index:30;
+      background: rgba(11,18,32,.72);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
     }
-    .topbar .inner{
+    .nav-inner{
       display:flex; align-items:center; justify-content:space-between;
-      padding:14px 0;
       gap:14px;
+      max-width:var(--max); margin:0 auto; padding:14px 22px;
     }
     .brand{
       display:flex; align-items:center; gap:12px;
-      min-width:220px;
+      text-decoration:none;
     }
-    .brand img{
-      width:42px; height:42px; object-fit:contain;
-      filter: drop-shadow(0 8px 18px rgba(87,215,255,.18));
+    .brand-badge{
+      width:38px; height:38px; border-radius:12px;
+      background: linear-gradient(135deg, rgba(120,180,255,.25), rgba(190,80,255,.20));
+      border:1px solid var(--line);
+      box-shadow: var(--glow);
+      display:grid; place-items:center;
+      overflow:hidden;
     }
-    .brand .name{font-weight:800; letter-spacing:.2px}
-    .brand .tag{font-size:12px; color:var(--muted); margin-top:2px}
-    nav{display:flex; gap:18px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
-    nav a{
-      font-size:14px; color:var(--muted);
-      padding:8px 10px; border-radius:10px;
+
+    /* ✅ LOGO SIN RECORTE */
+    .brand-badge img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      background: rgba(0,0,0,.20);
+      padding:4px;
+      display:block;
+    }
+
+    .brand-title{
+      display:flex; flex-direction:column; line-height:1.05;
+    }
+    .brand-title strong{font-size:14px; letter-spacing:.4px}
+    .brand-title span{font-size:12px; color:var(--muted)}
+    .nav-links{
+      display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end;
+      font-size:13px; color:var(--muted);
+    }
+    .nav-links a{
+      text-decoration:none;
+      padding:8px 10px;
+      border-radius:12px;
       border:1px solid transparent;
     }
-    nav a:hover{color:var(--text); border-color:rgba(87,215,255,.25); background:rgba(87,215,255,.06)}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding:12px 14px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    .nav-links a:hover{
       color:var(--text);
-      font-weight:650;
-      cursor:pointer;
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
-      user-select:none;
+      border-color:var(--line);
+      background:rgba(255,255,255,.05);
     }
-    .btn:hover{transform: translateY(-1px); border-color:rgba(87,215,255,.35); background: linear-gradient(180deg, rgba(87,215,255,.10), rgba(255,255,255,.02))}
-    .btn.primary{
-      border:none;
-      background: linear-gradient(90deg, rgba(87,215,255,.95), rgba(169,107,255,.95));
-      box-shadow: 0 14px 40px rgba(87,215,255,.16);
-      color:#06101A;
-    }
-    .btn.primary:hover{transform: translateY(-1px) scale(1.01)}
-    .btn.ghost{
-      background: transparent;
-      border-color: rgba(255,255,255,.14);
-      color: var(--text);
-    }
+
+    /* Hero */
     .hero{
-      padding:60px 0 26px;
+      padding:34px 0 10px;
     }
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:22px;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
       align-items:stretch;
     }
-    .hero-card{
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(12,18,32,.82), rgba(10,16,32,.72));
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr; }
     }
-    .hero-card::before{
+    .hero-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.035));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding:22px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-card:before{
       content:"";
       position:absolute; inset:-2px;
-      background: radial-gradient(700px 220px at 12% 10%, rgba(87,215,255,.18), transparent 55%),
-                  radial-gradient(600px 240px at 88% 0%, rgba(169,107,255,.18), transparent 55%);
+      background: radial-gradient(420px 260px at 25% 20%, rgba(120,180,255,.28), transparent 60%),
+                  radial-gradient(380px 220px at 85% 10%, rgba(190,80,255,.20), transparent 60%);
       pointer-events:none;
+      filter: blur(2px);
       opacity:.9;
     }
-    .hero-content{
-      position:relative;
-      padding:28px;
-      display:flex;
-      flex-direction:column;
-      gap:14px;
+    .hero-card > *{position:relative}
+    .kicker{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      font-size:12px;
+      color:var(--muted);
+      width:fit-content;
+      margin-bottom:12px;
     }
-    h1{
-      margin:0;
-      font-size: clamp(28px, 3.2vw, 44px);
-      line-height:1.06;
-      letter-spacing:-.6px;
+    .h1{
+      font-size:38px;
+      line-height:1.05;
+      margin:0 0 12px;
+      letter-spacing:-.7px;
+    }
+    @media (max-width: 520px){
+      .h1{font-size:30px}
     }
     .lead{
-      margin:0;
+      margin:0 0 16px;
       color:var(--muted);
-      font-size: clamp(15px, 1.2vw, 17px);
+      font-size:15px;
       line-height:1.55;
-      max-width: 62ch;
     }
-    .pillrow{display:flex; flex-wrap:wrap; gap:10px; margin-top:6px}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:9px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      font-size:13px;
-    }
-    .hero-actions{
-      display:flex; flex-wrap:wrap; gap:10px;
-      margin-top:8px;
-    }
-    .hero-media{
-      position:relative;
+
+    .cta-row{
       display:flex;
-      flex-direction:column;
       gap:12px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      text-decoration:none;
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:600;
+      font-size:14px;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .btn:hover{transform: translateY(-1px); background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.18)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(120,180,255,.30), rgba(190,80,255,.22));
+      box-shadow: var(--glow);
+    }
+    .btn.ghost{
+      background: rgba(0,0,0,.18);
+    }
+    .btn svg{width:18px;height:18px; display:block}
+
+    .hero-side{
+      display:grid;
+      gap:12px;
+    }
+    .mini{
+      background: rgba(255,255,255,.05);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
       padding:14px;
     }
-    .hero-media .imgwrap{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.25);
-      border-radius: 16px;
-      overflow:hidden;
-      height:100%;
-      min-height:260px;
-      box-shadow: 0 18px 45px rgba(0,0,0,.45);
-    }
-    .hero-media img{
-      width:100%; height:100%; object-fit:cover;
-      transform: scale(1.02);
-      filter: saturate(1.05) contrast(1.05);
-    }
-    .badge{
-      position:absolute; top:18px; left:18px;
-      display:inline-flex; align-items:center; gap:8px;
-      padding:10px 12px;
-      border-radius: 999px;
-      background: rgba(0,0,0,.55);
-      border: 1px solid rgba(255,255,255,.14);
-      color: var(--text);
-      font-size:13px;
-      backdrop-filter: blur(10px);
-    }
-    .section{padding:28px 0}
-    .section h2{
+    .mini h3{
       margin:0 0 8px;
-      font-size: 22px;
+      font-size:14px;
+      letter-spacing:.2px;
+    }
+    .mini ul{
+      margin:0; padding-left:18px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    /* Sections */
+    .section{
+      padding:18px 0;
+    }
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap:16px;
+      margin:16px 0 14px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size:20px;
       letter-spacing:-.2px;
     }
-    .section p{
-      margin:0 0 16px;
-      color: var(--muted);
-      line-height: 1.6;
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      max-width:560px;
+      line-height:1.45;
     }
+
     .grid{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap:16px;
+      gap:14px;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 620px){
+      .grid{grid-template-columns: 1fr;}
     }
     .card{
-      border:1px solid var(--line);
-      background: linear-gradient(180deg, rgba(12,18,32,.85), rgba(9,14,26,.75));
       border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
       overflow:hidden;
-      box-shadow: 0 14px 42px rgba(0,0,0,.45);
       display:flex;
       flex-direction:column;
-      min-height: 360px;
+      box-shadow: 0 16px 50px rgba(0,0,0,.25);
+      min-height: 420px;
     }
-    .card .thumb{
-      height: 170px;
-      overflow:hidden;
-      position:relative;
-      border-bottom:1px solid rgba(255,255,255,.10);
+
+    /* ✅ IMÁGENES COMPLETAS (sin recorte) */
+    .card .img{
+      width:100%;
+      height:auto;
+      aspect-ratio: 4 / 5;
+      display:block;
+      object-fit:contain;
+      background: rgba(0,0,0,.35);
+      padding:10px;
+      border-bottom:1px solid var(--line);
     }
-    .card .thumb img{
-      width:100%; height:100%; object-fit:cover;
-      filter: saturate(1.02) contrast(1.03);
-    }
+
     .card .body{
-      padding:16px;
+      padding:14px 14px 12px;
       display:flex;
       flex-direction:column;
       gap:10px;
-      height:100%;
+      flex:1;
     }
     .card h3{
       margin:0;
-      font-size: 16px;
+      font-size:16px;
       letter-spacing:-.2px;
     }
-    .card ul{
+    .card p{
       margin:0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 14px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.55;
+      flex:1;
     }
     .card .actions{
-      margin-top:auto;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
+      display:flex; gap:10px; flex-wrap:wrap;
     }
-    .small{font-size:12px; color:var(--muted)}
-    .two-col{
+    .card .actions .btn{
+      padding:10px 12px;
+      border-radius:12px;
+      font-size:13px;
+    }
+
+    /* Contact */
+    .contact{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap:16px;
+      gap:14px;
+      align-items:stretch;
     }
-    .panel{
+    @media (max-width: 900px){
+      .contact{grid-template-columns:1fr}
+    }
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    label{
+      font-size:12px;
+      color:var(--muted);
+    }
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
       border:1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(12,18,32,.82), rgba(9,14,26,.72));
-      box-shadow: 0 14px 42px rgba(0,0,0,.45);
-      padding:18px;
+      background: rgba(0,0,0,.20);
+      color:var(--text);
+      outline:none;
+      font-size:14px;
     }
-    .panel h3{margin:0 0 8px}
-    .panel p{margin:0 0 10px; color:var(--muted); line-height:1.6}
-    .list{
-      display:grid; gap:10px;
-      margin:10px 0 0;
+    textarea{min-height:120px; resize:vertical}
+    .note{
+      font-size:12px;
+      color:rgba(234,240,255,.60);
+      line-height:1.45;
+      margin:0;
     }
-    .li{
-      display:flex; gap:10px; align-items:flex-start;
-      padding:10px 12px;
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .dot{
-      width:10px; height:10px; border-radius:50%;
-      background: linear-gradient(90deg, var(--neon), var(--neon2));
-      margin-top:4px;
-      flex:0 0 auto;
-      box-shadow: 0 0 0 4px rgba(87,215,255,.10);
-    }
-    footer{
-      padding:22px 0 40px;
+    .footer{
+      padding:30px 0 44px;
+      color:rgba(234,240,255,.55);
+      font-size:12px;
       border-top:1px solid var(--line);
-      color: var(--muted);
+      margin-top:18px;
     }
-    .footer-inner{
-      display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:space-between;
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      padding:8px 12px;
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      font-size:12px;
     }
-    .icons{display:flex; gap:10px; align-items:center}
-    .iconbtn{
-      width:42px; height:42px;
-      border-radius: 12px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      display:grid; place-items:center;
-      cursor:pointer;
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
-    }
-    .iconbtn:hover{transform: translateY(-1px); border-color:rgba(87,215,255,.35); background: rgba(87,215,255,.08)}
-    .iconbtn svg{width:22px; height:22px; fill: currentColor}
-    @media (max-width: 920px){
-      .hero-grid{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-      nav{display:none}
-    }
-    @media (min-width: 560px) and (max-width: 980px){
-      .grid{grid-template-columns: repeat(2, 1fr)}
+    .ok{
+      display:none;
+      margin-top:8px;
+      font-size:12px;
+      color:rgba(160,255,200,.9);
     }
   </style>
 </head>
+
 <body>
 
-  <!-- CONFIG: cambia estos valores y listo -->
+  <!-- CONFIG (cambia aquí tus datos) -->
   <script>
-    // WhatsApp: pon el número con prefijo (España: 34) sin + ni espacios. Ejemplo: "34600000000"
-    const WHATSAPP_NUMBER = ""; // <- rellénalo si quieres WhatsApp
-    // Telegram: tu usuario sin @
-    const TELEGRAM_USER = "DPremiumorg"; // <- cámbialo si quieres
-    // Mensaje automático
-    const CONTACT_MESSAGE = "Hola, vengo de David Milán Servicios";
+    // ✅ Pon tu número SIN + y sin espacios. Ej: 34609036804
+    const WHATSAPP_NUMBER = "34684721836";
+
+    // ✅ Pon tu usuario SIN @. Ej: DPremiumorg
+    const TELEGRAM_USER = "davidmilanservicios";
+
+    // ✅ Mensaje fijo (solo esto)
+    const DEFAULT_MESSAGE = "hola vengo de DAVIDMILANACADEMY";
   </script>
 
-  <header class="topbar">
-    <div class="container">
-      <div class="inner">
-        <a class="brand" href="#inicio" aria-label="Ir al inicio">
-          <img src="assets/logo.png" alt="Logo David Milán Servicios" />
-          <div>
-            <div class="name">David Milán Servicios</div>
-            <div class="tag">Psicología • Formación • Alto rendimiento</div>
-          </div>
-        </a>
-
-        <nav aria-label="Navegación principal">
-          <a href="#servicios">Servicios</a>
-          <a href="#metodo">Método</a>
-          <a href="#contacto">Contacto</a>
-        </nav>
-
-        <div style="display:flex; gap:10px; align-items:center">
-          <button class="btn ghost" type="button" onclick="openTelegram()">Telegram</button>
-          <button class="btn primary" type="button" onclick="openWhatsApp()">WhatsApp</button>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top">
+        <div class="brand-badge" title="Logo / imagen">
+          <img src="assets/david-milan.png" alt="Logo" />
         </div>
-      </div>
+        <div class="brand-title">
+          <strong>David Milán</strong>
+          <span>Psicología · Refuerzo · Ingeniería</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#psicologia">Psicología</a>
+        <a href="#clases">Clases</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
     </div>
   </header>
 
-  <main id="inicio" class="hero">
-    <div class="container">
+  <main id="top" class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
       <div class="hero-grid">
-        <section class="hero-card">
-          <div class="hero-content">
-            <h1>Clases particulares y apoyo psicológico con enfoque práctico y humano.</h1>
-            <p class="lead">
-              Acompañamiento para <strong>ansiedad</strong>, <strong>ataques de pánico</strong> y <strong>estrés</strong>,
-              y <strong>formación</strong> para ESO, Bachillerato e Ingeniería. Sesiones online o presenciales, con un plan claro y medible.
-            </p>
+        <div class="hero-card">
+          <div class="kicker">🌿 Atención individual · Online / Presencial</div>
+          <h1 class="h1">Clases particulares & apoyo psicológico</h1>
+          <p class="lead">
+            Acompañamiento claro, práctico y orientado a resultados: ansiedad, ataques de pánico, gestión del estrés,
+            motivación y técnicas de estudio. Refuerzo ESO/Bachillerato e Ingeniería.
+          </p>
 
-            <div class="pillrow" aria-label="Áreas principales">
-              <span class="pill">🧠 Psicología aplicada</span>
-              <span class="pill">📚 Refuerzo académico</span>
-              <span class="pill">⚙️ Ingeniería & ciencias</span>
-              <span class="pill">🎯 Motivación & técnicas de estudio</span>
-            </div>
+          <div class="cta-row">
+            <a class="btn primary" id="btnWhatsHero" href="#">
+              <!-- WhatsApp icon -->
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20.5 11.9c0 4.7-3.8 8.6-8.6 8.6-1.4 0-2.7-.3-3.9-1L3.5 21l1.6-4.4c-.6-1.1-1-2.4-1-3.8 0-4.7 3.8-8.6 8.6-8.6s8.6 3.8 8.6 8.6Z" stroke="rgba(255,255,255,.85)" stroke-width="1.2"/>
+                <path d="M9.2 8.4c.2-.5.4-.5.6-.5h.5c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4 0 .5l-.3.4c-.1.1-.2.3-.1.5.2.5.9 1.4 1.9 2 .9.5 1.4.6 1.6.5.2-.1.6-.7.8-1 .2-.2.4-.2.6-.1l1.5.7c.3.1.4.3.4.5 0 .7-.4 1.5-1 2-.6.5-1.5.8-3.3.1-1.9-.7-3.5-2.4-4.4-3.8-.9-1.3-1-2.5-.8-3.1Z" fill="rgba(255,255,255,.85)"/>
+              </svg>
+              WhatsApp
+            </a>
 
-            <div class="hero-actions">
-              <button class="btn primary" type="button" onclick="openTelegram()">Contactar por Telegram</button>
-              <button class="btn" type="button" onclick="openWhatsApp()">Contactar por WhatsApp</button>
-              <a class="btn" href="#servicios">Ver servicios</a>
-            </div>
+            <a class="btn ghost" id="btnTgHero" href="#">
+              <!-- Telegram icon -->
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M21 4.8 3.7 11.4c-.8.3-.8 1.4.1 1.7l4.3 1.5 1.7 5c.3.9 1.5 1 2 .2l2.7-3.4 4.7 3.4c.6.4 1.4.1 1.5-.6l2.5-13c.1-.8-.7-1.4-1.4-1.1Z" stroke="rgba(255,255,255,.85)" stroke-width="1.2"/>
+                <path d="M8.2 14.6 18.8 7.7c.2-.1.4.1.2.3l-8.7 8.1" stroke="rgba(255,255,255,.85)" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+              Telegram
+            </a>
 
-            <div class="small">* Si no has configurado WhatsApp en el código, el botón te avisará para que lo rellenes.</div>
+            <a class="btn" href="#psicologia">Ver servicios</a>
           </div>
-        </section>
 
-        <aside class="hero-card hero-media" aria-label="Imagen destacada">
-          <div class="imgwrap">
-            <span class="badge">Disponible online y presencial</span>
-            <img src="assets/clases_particulares_david_milan.png" alt="Clases particulares impartidas por David Milán" />
+          <p class="note" style="margin-top:10px">
+            * Si estás en una crisis intensa o con ideas de hacerte daño, busca ayuda urgente (112 en España).
+          </p>
+        </div>
+
+        <aside class="hero-side">
+          <div class="mini">
+            <h3>✅ Enfoque</h3>
+            <ul>
+              <li>Plan personalizado y seguimiento.</li>
+              <li>Herramientas prácticas desde la primera sesión.</li>
+              <li>Refuerzo académico con método y claridad.</li>
+            </ul>
+          </div>
+          <div class="mini">
+            <h3>📍 Modalidad</h3>
+            <ul>
+              <li>Online / Presencial (según disponibilidad).</li>
+              <li>Horarios flexibles.</li>
+              <li>Sesiones individuales.</li>
+            </ul>
           </div>
         </aside>
       </div>
-    </div>
-  </main>
+    </section>
 
-  <section id="servicios" class="section">
-    <div class="container">
-      <h2>Servicios</h2>
-      <p>Selecciona el área que necesites y contacta con un clic. El mensaje se enviará ya preparado.</p>
+    <!-- PSICOLOGÍA -->
+    <section id="psicologia" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Psicología y bienestar</h2>
+          <p>Intervención orientada a síntomas reales, con herramientas claras y un plan de mejora paso a paso.</p>
+        </div>
+      </div>
 
       <div class="grid">
         <article class="card">
-          <div class="thumb">
-            <img src="assets/terapia_ansiedad.png" alt="Terapia para Ansiedad" />
-          </div>
+          <img class="img" src="assets/ansiedad.png" alt="Terapia para Ansiedad" />
           <div class="body">
             <h3>Terapia para Ansiedad</h3>
-            <ul>
-              <li>Psicoeducación: entender qué te pasa.</li>
-              <li>Regulación fisiológica y respiración.</li>
-              <li>Plan semanal con tareas simples.</li>
-            </ul>
+            <p>Identificación de disparadores, técnicas de regulación, reestructuración cognitiva y hábitos para recuperar estabilidad.</p>
             <div class="actions">
-              <button class="btn primary" type="button" onclick="contact('Terapia para Ansiedad')">Contactar</button>
-              <a class="btn" href="#contacto">Más info</a>
+              <a class="btn primary js-wa" href="#" data-topic="Terapia para Ansiedad">WhatsApp</a>
+              <a class="btn js-tg" href="#" data-topic="Terapia para Ansiedad">Telegram</a>
             </div>
           </div>
         </article>
 
         <article class="card">
-          <div class="thumb">
-            <img src="assets/control_panico.png" alt="Control de Ataques de Pánico" />
-          </div>
+          <img class="img" src="assets/panico.png" alt="Control de Ataques de Pánico" />
           <div class="body">
             <h3>Control de Ataques de Pánico</h3>
-            <ul>
-              <li>Protocolo de actuación (paso a paso).</li>
-              <li>Exposición gradual y reducción de evitación.</li>
-              <li>Herramientas rápidas para crisis.</li>
-            </ul>
+            <p>Protocolos prácticos para cortar la escalada, respiración guiada, exposición gradual y prevención de recaídas.</p>
             <div class="actions">
-              <button class="btn primary" type="button" onclick="contact('Control de Ataques de Pánico')">Contactar</button>
-              <a class="btn" href="#contacto">Más info</a>
+              <a class="btn primary js-wa" href="#" data-topic="Control de Ataques de Pánico">WhatsApp</a>
+              <a class="btn js-tg" href="#" data-topic="Control de Ataques de Pánico">Telegram</a>
             </div>
           </div>
         </article>
 
         <article class="card">
-          <div class="thumb">
-            <img src="assets/gestion_estres.png" alt="Gestión del Estrés" />
-          </div>
+          <img class="img" src="assets/estres.png" alt="Gestión del Estrés" />
           <div class="body">
             <h3>Gestión del Estrés</h3>
-            <ul>
-              <li>Rutinas, límites y hábitos sostenibles.</li>
-              <li>Reestructuración cognitiva aplicada.</li>
-              <li>Mejora del sueño y energía.</li>
-            </ul>
+            <p>Organización mental, límites, higiene del sueño y técnicas para reducir tensión y mejorar rendimiento diario.</p>
             <div class="actions">
-              <button class="btn primary" type="button" onclick="contact('Gestión del Estrés')">Contactar</button>
-              <a class="btn" href="#contacto">Más info</a>
+              <a class="btn primary js-wa" href="#" data-topic="Gestión del Estrés">WhatsApp</a>
+              <a class="btn js-tg" href="#" data-topic="Gestión del Estrés">Telegram</a>
             </div>
           </div>
         </article>
+      </div>
+    </section>
 
+    <!-- CLASES -->
+    <section id="clases" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Clases particulares</h2>
+          <p>Refuerzo y preparación con método: claridad, práctica guiada y objetivos medibles.</p>
+        </div>
+      </div>
+
+      <div class="grid">
         <article class="card">
-          <div class="thumb">
-            <img src="assets/motivacion_tecnicas.png" alt="Motivación y Gestión de Técnicas" />
-          </div>
+          <img class="img" src="assets/motivacion.png" alt="Motivación y Gestión de Técnicas" />
           <div class="body">
-            <h3>Motivación y Técnicas de Estudio</h3>
-            <ul>
-              <li>Planificación realista (sin humo).</li>
-              <li>Técnicas: pomodoro pro, repasos, mapas.</li>
-              <li>Seguimiento y métricas.</li>
-            </ul>
+            <h3>Motivación y Gestión de Técnicas</h3>
+            <p>Organización, hábitos, técnicas de estudio y enfoque para que avances sin quemarte ni perder el ritmo.</p>
             <div class="actions">
-              <button class="btn primary" type="button" onclick="contact('Motivación y Técnicas de Estudio')">Contactar</button>
-              <a class="btn" href="#contacto">Más info</a>
+              <a class="btn primary js-wa" href="#" data-topic="Motivación y Gestión de Técnicas">WhatsApp</a>
+              <a class="btn js-tg" href="#" data-topic="Motivación y Gestión de Técnicas">Telegram</a>
             </div>
           </div>
         </article>
 
         <article class="card">
-          <div class="thumb">
-            <img src="assets/clases_ingenieria.png" alt="Clases de Ingeniería" />
-          </div>
+          <img class="img" src="assets/ingenieria.png" alt="Clases de Ingeniería" />
           <div class="body">
             <h3>Clases de Ingeniería</h3>
-            <ul>
-              <li>Matemáticas, Física, Química y afines.</li>
-              <li>Resolución guiada + ejercicios tipo examen.</li>
-              <li>Material personalizado.</li>
-            </ul>
+            <p>Apoyo en asignaturas técnicas con resolución paso a paso y estrategia de examen (según tu plan de estudios).</p>
             <div class="actions">
-              <button class="btn primary" type="button" onclick="contact('Clases de Ingeniería')">Contactar</button>
-              <a class="btn" href="#contacto">Más info</a>
+              <a class="btn primary js-wa" href="#" data-topic="Clases de Ingeniería">WhatsApp</a>
+              <a class="btn js-tg" href="#" data-topic="Clases de Ingeniería">Telegram</a>
             </div>
           </div>
         </article>
 
         <article class="card">
-          <div class="thumb">
-            <img src="assets/refuerzo_eso_bachillerato.png" alt="Refuerzo ESO y Bachillerato" />
-          </div>
+          <img class="img" src="assets/refuerzo.png" alt="Refuerzo ESO y Bachillerato" />
           <div class="body">
             <h3>Refuerzo ESO & Bachillerato</h3>
-            <ul>
-              <li>Refuerzo, recuperaciones y preparación de exámenes.</li>
-              <li>Base sólida + trucos para notas.</li>
-              <li>Constancia con método.</li>
-            </ul>
+            <p>Refuerzo de base, recuperación, preparación de exámenes y mejora progresiva con ejercicios guiados.</p>
             <div class="actions">
-              <button class="btn primary" type="button" onclick="contact('Refuerzo ESO y Bachillerato')">Contactar</button>
-              <a class="btn" href="#contacto">Más info</a>
+              <a class="btn primary js-wa" href="#" data-topic="Refuerzo ESO & Bachillerato">WhatsApp</a>
+              <a class="btn js-tg" href="#" data-topic="Refuerzo ESO & Bachillerato">Telegram</a>
             </div>
           </div>
         </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="metodo" class="section">
-    <div class="container">
-      <h2>Método</h2>
-      <p>Una forma de trabajar clara: diagnóstico, plan, ejecución y seguimiento.</p>
-
-      <div class="two-col">
-        <div class="panel">
-          <h3>En psicología</h3>
-          <p>Intervención basada en evidencia, adaptada a tu caso, con herramientas prácticas desde la primera sesión.</p>
-          <div class="list">
-            <div class="li"><span class="dot"></span><span>Evaluación inicial y objetivos realistas.</span></div>
-            <div class="li"><span class="dot"></span><span>Técnicas de regulación (cuerpo + mente).</span></div>
-            <div class="li"><span class="dot"></span><span>Exposición gradual y reducción de evitación.</span></div>
-            <div class="li"><span class="dot"></span><span>Plan semanal: hábitos y tareas sencillas.</span></div>
-          </div>
-        </div>
-
-        <div class="panel">
-          <h3>En formación</h3>
-          <p>Explicación clara, ejercicios tipo examen y estrategia de estudio para que avances más rápido con menos estrés.</p>
-          <div class="list">
-            <div class="li"><span class="dot"></span><span>Diagnóstico de nivel y puntos débiles.</span></div>
-            <div class="li"><span class="dot"></span><span>Explicaciones simples + ejemplos guiados.</span></div>
-            <div class="li"><span class="dot"></span><span>Entrenamiento: problemas y simulacros.</span></div>
-            <div class="li"><span class="dot"></span><span>Repaso inteligente y seguimiento.</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contacto" class="section">
-    <div class="container">
-      <h2>Contacto</h2>
-      <p>Escríbeme por Telegram o WhatsApp con el mensaje preparado. Si prefieres email, también.</p>
-
-      <div class="panel">
-        <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
-          <button class="btn primary" type="button" onclick="openTelegram()">Abrir Telegram</button>
-          <button class="btn" type="button" onclick="openWhatsApp()">Abrir WhatsApp</button>
-          <button class="btn ghost" type="button" onclick="openEmail()">Enviar Email</button>
-        </div>
-        <p class="small" style="margin-top:12px">
-          Mensaje automático: <strong id="msgPreview"></strong>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      <div class="footer-inner">
+    <!-- SOBRE / FOTO -->
+    <section class="section">
+      <div class="section-head">
         <div>
-          <strong>David Milán Servicios</strong>
-          <div class="small">Psicología • Clases particulares • Ingeniería • ESO/Bachillerato</div>
-        </div>
-
-        <div class="icons" aria-label="Accesos directos">
-          <button class="iconbtn" type="button" onclick="openTelegram()" aria-label="Telegram"><span style="font-weight:800;letter-spacing:.5px">TG</span></button>
-
-          <button class="iconbtn" type="button" onclick="openWhatsApp()" aria-label="WhatsApp"><span style="font-weight:800;letter-spacing:.5px">WA</span></button>
-
-          <button class="iconbtn" type="button" onclick="openEmail()" aria-label="Email"><span style="font-weight:800;letter-spacing:.5px">@</span></button>
+          <h2>Clases impartidas por David Milán</h2>
+          <p>Si quieres, coméntame tu objetivo y preparo un plan claro (sesiones, ritmo y prioridades).</p>
         </div>
       </div>
 
-      <div class="small" style="margin-top:12px; opacity:.95">
-        © <span id="year"></span> David Milán. Todos los derechos reservados.
+      <div class="card">
+        <img class="img" src="assets/david-milan.png" alt="Clases particulares impartidas por David Milán" />
+        <div class="body">
+          <h3>Un enfoque directo y práctico</h3>
+          <p>Contacto rápido por WhatsApp o Telegram. Si lo prefieres, usa el formulario (Netlify Forms) y te llega a la bandeja de Netlify.</p>
+          <div class="actions">
+            <a class="btn primary" id="btnWhatsMid" href="#">WhatsApp</a>
+            <a class="btn" id="btnTgMid" href="#">Telegram</a>
+            <a class="btn ghost" href="#contacto">Formulario</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Contacto</h2>
+          <p>El formulario funciona con Netlify Forms. Si lo publicas en Netlify, verás los mensajes en: Site settings → Forms.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="hero-card" style="padding:18px">
+          <h3 style="margin:0 0 10px">Escríbeme por chat</h3>
+          <p class="note" style="margin:0 0 12px">Abrirás WhatsApp/Telegram con un mensaje simple.</p>
+
+          <div class="cta-row">
+            <a class="btn primary" id="btnWhatsContact" href="#">
+              <!-- WhatsApp icon -->
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M20.5 11.9c0 4.7-3.8 8.6-8.6 8.6-1.4 0-2.7-.3-3.9-1L3.5 21l1.6-4.4c-.6-1.1-1-2.4-1-3.8 0-4.7 3.8-8.6 8.6-8.6s8.6 3.8 8.6 8.6Z" stroke="rgba(255,255,255,.85)" stroke-width="1.2"/>
+                <path d="M9.2 8.4c.2-.5.4-.5.6-.5h.5c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4 0 .5l-.3.4c-.1.1-.2.3-.1.5.2.5.9 1.4 1.9 2 .9.5 1.4.6 1.6.5.2-.1.6-.7.8-1 .2-.2.4-.2.6-.1l1.5.7c.3.1.4.3.4.5 0 .7-.4 1.5-1 2-.6.5-1.5.8-3.3.1-1.9-.7-3.5-2.4-4.4-3.8-.9-1.3-1-2.5-.8-3.1Z" fill="rgba(255,255,255,.85)"/>
+              </svg>
+              WhatsApp
+            </a>
+
+            <a class="btn" id="btnTgContact" href="#">
+              <!-- Telegram icon -->
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M21 4.8 3.7 11.4c-.8.3-.8 1.4.1 1.7l4.3 1.5 1.7 5c.3.9 1.5 1 2 .2l2.7-3.4 4.7 3.4c.6.4 1.4.1 1.5-.6l2.5-13c.1-.8-.7-1.4-1.4-1.1Z" stroke="rgba(255,255,255,.85)" stroke-width="1.2"/>
+                <path d="M8.2 14.6 18.8 7.7c.2-.1.4.1.2.3l-8.7 8.1" stroke="rgba(255,255,255,.85)" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+              Telegram
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-card" style="padding:18px">
+          <h3 style="margin:0 0 10px">Formulario (Netlify)</h3>
+          <p class="note" style="margin:0 0 12px">
+            Funciona en Netlify sin nada extra. Solo publica la web y activa Forms automáticamente.
+          </p>
+
+          <!-- NETLIFY FORMS -->
+          <form name="consultas" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/ok">
+            <input type="hidden" name="form-name" value="consultas" />
+            <p style="display:none">
+              <label>No rellenar: <input name="bot-field" /></label>
+            </p>
+
+            <div>
+              <label>Nombre</label>
+              <input name="nombre" type="text" placeholder="Tu nombre" required />
+            </div>
+
+            <div>
+              <label>Contacto (WhatsApp/Email)</label>
+              <input name="contacto" type="text" placeholder="Ej: 600 000 000 o email@..." required />
+            </div>
+
+            <div>
+              <label>¿Qué necesitas?</label>
+              <textarea name="mensaje" placeholder="Escribe tu consulta..." required></textarea>
+            </div>
+
+            <button class="btn primary" type="submit">Enviar</button>
+            <div class="ok" id="okMsg">✅ Enviado. Gracias, te responderé lo antes posible.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="pill">© <span id="year"></span> David Milán — Clases & Psicología</div>
+    </footer>
+  </main>
 
   <script>
-    const enc = encodeURIComponent;
-
-    function ensureWhatsappConfigured(){
-      if(!WHATSAPP_NUMBER || WHATSAPP_NUMBER.trim().length < 8){
-        alert("Para que WhatsApp funcione, edita el archivo index.html y rellena WHATSAPP_NUMBER (con prefijo, sin +).");
-        return false;
-      }
-      return true;
-    }
-
-    function openWhatsApp(extra){
-      if(!ensureWhatsappConfigured()) return;
-      const base = "https://wa.me/" + WHATSAPP_NUMBER.trim();
-      const text = CONTACT_MESSAGE + (extra ? (" — " + extra) : "");
-      window.open(base + "?text=" + enc(text), "_blank", "noopener");
-    }
-
-    function openTelegram(extra){
-      const user = (TELEGRAM_USER || "").trim().replace(/^@/,"");
-      if(!user){
-        alert("Para que Telegram funcione, edita el archivo index.html y rellena TELEGRAM_USER.");
-        return;
-      }
-      const text = CONTACT_MESSAGE + (extra ? (" — " + extra) : "");
-      // deep link: abrir chat + texto (si el cliente lo soporta)
-      const url = "https://t.me/" + user + "?text=" + enc(text);
-      window.open(url, "_blank", "noopener");
-    }
-
-    function openEmail(extra){
-      const subject = "Consulta desde la web";
-      const body = CONTACT_MESSAGE + (extra ? (" — " + extra) : "");
-      window.location.href = "mailto:?subject=" + enc(subject) + "&body=" + enc(body);
-    }
-
-    function contact(service){
-      // Prioriza Telegram (no requiere número), y deja WhatsApp como alternativa
-      openTelegram(service);
-    }
-
-    // UI
+    // Año
     document.getElementById("year").textContent = new Date().getFullYear();
-    document.getElementById("msgPreview").textContent = CONTACT_MESSAGE;
+
+    const encode = (s) => encodeURIComponent(s);
+
+    function buildWhatsAppLink(){
+      return `https://wa.me/${WHATSAPP_NUMBER}?text=${encode(DEFAULT_MESSAGE)}`;
+    }
+    function buildTelegramLink(){
+      return `https://t.me/${TELEGRAM_USER}`;
+    }
+
+    function applyLinks(){
+      const heroWA = document.getElementById("btnWhatsHero");
+      const heroTG = document.getElementById("btnTgHero");
+      const midWA  = document.getElementById("btnWhatsMid");
+      const midTG  = document.getElementById("btnTgMid");
+      const cWA    = document.getElementById("btnWhatsContact");
+      const cTG    = document.getElementById("btnTgContact");
+
+      if (heroWA) heroWA.href = buildWhatsAppLink();
+      if (midWA)  midWA.href  = buildWhatsAppLink();
+      if (cWA)    cWA.href    = buildWhatsAppLink();
+
+      if (heroTG) heroTG.href = buildTelegramLink();
+      if (midTG)  midTG.href  = buildTelegramLink();
+      if (cTG)    cTG.href    = buildTelegramLink();
+
+      document.querySelectorAll(".js-wa").forEach(a=>{
+        a.href = buildWhatsAppLink();
+        a.target = "_blank";
+        a.rel = "noopener";
+      });
+      document.querySelectorAll(".js-tg").forEach(a=>{
+        a.href = buildTelegramLink();
+        a.target = "_blank";
+        a.rel = "noopener";
+      });
+    }
+
+    applyLinks();
+
+    // NETLIFY FORMS OK
+    if (location.pathname.endsWith("/ok")) {
+      history.replaceState({}, "", "/#contacto");
+      setTimeout(()=>{
+        const el = document.getElementById("okMsg");
+        if (el) el.style.display = "block";
+      }, 150);
+    }
   </script>
+
 </body>
 </html>
+
